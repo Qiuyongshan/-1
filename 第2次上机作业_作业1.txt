@@ -1,0 +1,39 @@
+//找出质数存入数组
+var primes = [Int]()
+for i in 2...10000{
+	var isPrime = true
+	for j in 2 ..< i{
+		if i % j == 0{
+			isPrime = false
+		}
+	}
+	if isPrime{
+		primes.append(i)
+	}
+}
+print(primes)
+
+//方法一：
+//定义正向比较还是反向比较
+func compare(x:Int,y:Int) -> Bool{
+	return x > y
+}
+primes.sort(by:compare)
+//方法二：
+primes.sort(by:{
+	(x:Int,y:Int) -> Bool in
+		return x > y
+})
+//方法三：
+primes.sort(by:{
+	(x,y) in
+		return x > y
+})
+//方法四：
+primes.sort(by:{
+	return $0 > $1
+})
+//方法五：
+primes.sort($0 > $1)
+
+print(primes)
